@@ -16,7 +16,7 @@ from transformers import TFBertForSequenceClassification
 from utils.process_features import extract_features, map_features, encode_data
 
 # own utils
-from utils.load_data import load_data, reclassify_labels
+from utils.load_data import load_data#, reclassify_labels
 
 
 # %% GET DATA
