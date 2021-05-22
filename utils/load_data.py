@@ -14,6 +14,7 @@ def load_data(data_path, test_split = 0.2, seed = 1):
                 data_list = line.split('\t')
                 data_list[1] = data_list[1].replace('\n', '') # remove newlines
                 data_list[1].strip() # remove whitespace from comment
+                data_list[0] = int(data_list[0])
 
                 data.append(data_list)
 
