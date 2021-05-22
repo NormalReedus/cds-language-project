@@ -27,7 +27,9 @@ def load_data(data_path, test_split = 0.2, seed = 1):
     train_data = data[:split_point]
     test_data = data[split_point:]
 
-    return train_data, test_data
+    train_data_reclassed, test_data_reclassed = reclassify_labels(train_data, test_data)
+
+    return train_data_reclassed, test_data_reclassed
 
 # use this if you only need toxic (0) and non-toxic (1) labels
 def reclassify_labels(train_data, test_data):

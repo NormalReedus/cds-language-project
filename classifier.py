@@ -22,21 +22,21 @@ from utils.load_data import load_data, reclassify_labels
 # %% GET DATA
 
 data_train, data_test = load_data(os.path.join('data', 'VideoCommentsThreatCorpus.txt'))
-data_train, data_test = reclassify_labels(data_train, data_test)
+# data_train, data_test = reclassify_labels(data_train, data_test)
 
 # %% SAMPLE DATA - REMOVE THIS PART
 
-data_train = data_train[:800]
-data_test = data_test[:200]
+data_train = data_train[:100]
+data_test = data_test[:20]
 
 # %% ENCODE DATA
 
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
 
 # train dataset
-data_train_encoded = encode_data(data_train, tokenizer).batch(32)
+data_train_encoded = encode_data(data_train, tokenizer).batch(64)
 # test dataset
-data_test_encoded = encode_data(data_test, tokenizer).batch(32)
+data_test_encoded = encode_data(data_test, tokenizer).batch(64)
 
 # %% MODEL
 
@@ -64,7 +64,7 @@ model.compile(optimizer=optimizer,
 number_of_epochs = 1
 bert_history = model.fit(data_train_encoded, 
                          epochs=number_of_epochs,
-                         batch_size=32,
+                         batch_size=64,
                          validation_data=data_test_encoded)
 
 # %% EVAL
