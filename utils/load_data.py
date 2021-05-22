@@ -31,17 +31,17 @@ def load_data(data_path, test_split = 0.2, seed = 1):
 
 # use this if you only need toxic (0) and non-toxic (1) labels
 def reclassify_labels(train_data, test_data):
-    toxic_labels = ['2', '3']
+    toxic_labels = [2, 3]
 
     train_copy = train_data.copy()
     test_copy = test_data.copy()
 
     for i in range(len(train_copy)):
         if train_copy[i][0] in toxic_labels:
-            train_copy[i][0] = '1'
+            train_copy[i][0] = 1
 
     for i in range(len(test_copy)):
         if test_copy[i][0] in toxic_labels:
-            test_copy[i][0] = '1'
+            test_copy[i][0] = 1
     
     return train_copy, test_copy
