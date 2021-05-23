@@ -1,5 +1,6 @@
 data/
 lang101/
+hate_model/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -22,7 +22,7 @@ from utils.load_data import load_data
 # %% CONSTANTS
 
 #! argparse
-BATCH_SIZE = 3 
+BATCH_SIZE = 64 
 EPOCHS = 3
 OUTPATH = 'output'
 
@@ -33,8 +33,8 @@ data_train, data_test = load_data(os.path.join('data', 'VideoCommentsThreatCorpu
 
 # %% SAMPLE DATA - REMOVE THIS PART
 
-data_train = data_train[:100]
-data_test = data_test[:100]
+# data_train = data_train[:50]
+# data_test = data_test[:50]
 
 # %% ENCODE DATA
 
@@ -72,6 +72,8 @@ history = model.fit(data_train_encoded,
                          epochs=EPOCHS,
                          batch_size=BATCH_SIZE,
                          validation_data=data_test_encoded)
+# %% SAVE MODEL
+model.save(os.path.join(OUTPATH, 'hate_model'), include_optimizer=False)
 
 # %% EVAL
 loss, accuracy = model.evaluate(data_test_encoded)
@@ -111,7 +113,6 @@ plt.ylabel('Accuracy')
 plt.legend(loc='lower right')
 
 plt.savefig(os.path.join(OUTPATH, 'history.png'), bbox_inches='tight')
-# %% SAVE HISTORY
 
 
 #* Graphing, saving models etc
