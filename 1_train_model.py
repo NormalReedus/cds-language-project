@@ -79,7 +79,6 @@ def main(sample_num, batch_size, epochs):
     # b is for "solid blue line"
     plt.plot(epochs, val_loss, 'b', label='Validation loss')
     plt.title('Training and validation loss')
-    # plt.xlabel('Epochs')
     plt.ylabel('Loss')
     plt.legend()
 
